@@ -1,7 +1,7 @@
 # Capture Data 
 
-The following flow shows an example on how to capture trainings data for a machine learning model via Node-RED. 
-The flow allows logging of training and test data to a csv file as well as visualization of the measured values. In addition to the measured values, the timestamp and the corresponding labels are also added to the csv file.
+The following flow shows an example on how to capture trainings data for a [machine learning model](https://github.com/SSV-embedded/TinyML_IR-Sensor) via Node-RED. 
+The flow allows logging of training data and test data to a csv file as well as visualization of the measured values. In addition to the measured values, the timestamp and the corresponding labels are also added to the csv file.
 
 ![alt-text][Flow]
 
@@ -18,14 +18,21 @@ A button on the dashboard can be used to start logging to the csv file. The coun
 
 ## Input Data 
 
-For capturing the data we are running Node-RED on windows. The sensor is connect to the PC via USB. As an input node we are therefor using the Serial In. The Serial Port can be found via the device manager. The input data is a JSON String. In the second step, the JSON string is converted to a JSON object.
+For capturing the data we are running Node-RED on windows. The sensor is connect to the PC via USB. As an input node we are therefor using the `serial in`. The Serial Port can be found via the device manager. The input data is a JSON String. In the second step, the JSON string is converted to a JSON object. The sensor measuers the RGB Colour Value. After converting the input data to a JSON object the `msg.paylpoad` therefore contains the R-, G-, B-, and C-Value.  
 
 ## To CSV
 
-The node `toCSV` can be used to add the timestamp and the label to the data. The preinstalled flow contains as class for exmaple a zero. Changes to the class can be made in the following line of the node. Please note that the following [machine learning model](https://github.com/SSV-embedded/TinyML_IR-Sensor) can only classify numbers. 
+The node `toCSV` can be used to add the timestamp and the label to the data. The preinstalled flow contains as class a zero. Changes to the class can be made in the following line of the node. Please note that the following [machine learning model](https://github.com/SSV-embedded/TinyML_IR-Sensor) can only classify numbers. 
 
 ``` 
 msg.payload = data + ',' + msg.payload + ',' + "0"; 
 ```
+records delimiter = ";"
+Coloumn 1: Timestamp GMT
+Coloumn 2: R-Value
+Coloumn 3: G-Value
+Coloumn 3: B-Value 
+Coloumn 4: C-Value 
+
 
 Using the node `CSVtoFile` the storage location is defined. Make sure to enter the entire file path. Running Node-RED on windows you can access the file directly from your explorer. If you are running Node-RED on a Raspberry Pi you should use a FTP client to access the file. 
