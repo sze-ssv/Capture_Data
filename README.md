@@ -15,3 +15,17 @@ The dashboard looks like following:
 [Dashboard]: https://github.com/sze-ssv/Capture_Data/blob/a5237569338459fa83816db67f0014b5c5a0027a/Dashboard.png
 
 A button on the dashboard can be used to start logging to the csv file. The counter visualizes how many data sets are added to the file. As soon as the flow is redeployed, the counter starts at zero. 
+
+## Input Data 
+
+For capturing the data we are running Node-RED on windows. The sensor is connect to the PC via USB. As an input node we are therefor using the Serial In. The Serial Port can be found via the device manager. The input data is a JSON String. In the second step, the JSON string is converted to a JSON object.
+
+## To CSV
+
+The node `toCSV` can be used to add the timestamp and the label to the data. The preinstalled flow contains as class for exmaple a zero. Changes to the class can be made in the following line of the node. Please note that the following [machine learning model](https://github.com/SSV-embedded/TinyML_IR-Sensor) can only classify numbers. 
+
+``` 
+msg.payload = data + ',' + msg.payload + ',' + "0"; 
+```
+
+Using the node `CSVtoFile` the storage location is defined. Make sure to enter the entire file path. Running Node-RED on windows you can access the file directly from your explorer. If you are running Node-RED on a Raspberry Pi you should use a FTP client to access the file. 
