@@ -27,12 +27,5 @@ The node `toCSV` can be used to add the timestamp and the label to the data. The
 ``` 
 msg.payload = data + ',' + msg.payload + ',' + "0"; 
 ```
-records delimiter = ";"
-Coloumn 1: Timestamp GMT
-Coloumn 2: R-Value
-Coloumn 3: G-Value
-Coloumn 3: B-Value 
-Coloumn 4: C-Value 
-
 
 Using the node `CSVtoFile` the storage location is defined. Make sure to enter the entire file path. Running Node-RED on windows you can access the file directly from your explorer. If you are running Node-RED on a Raspberry Pi you should use a FTP client to access the file. 
