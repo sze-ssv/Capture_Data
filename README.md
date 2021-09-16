@@ -17,9 +17,20 @@ The dashboard looks like following:
 A button on the dashboard can be used to start logging to the csv file. The counter visualizes how many data sets are added to the file. As soon as the flow is redeployed, the counter starts at zero. 
 Moreover the dashboard visualizes the data. The connected sensor measures 64 temperature values in an 8x8 array. 
 
+## Loading Palette Nodes
+
+The flow uses the following nodes which you need to install, before you can run the flow successfully: 
+
+[Serial In](https://flows.nodered.org/node/node-red-node-serialport) \
+[Heatmap](https://flows.nodered.org/node/node-red-contrib-ui-heatmap) \
+[Counter](https://flows.nodered.org/node/node-red-contrib-counter) \
+[Dashboard](https://flows.nodered.org/node/node-red-dashboard)
+
+
+
 ## Input Data 
 
-For capturing the data we are running Node-RED on windows. The sensor is connect to the PC via USB. As an input node we are therefor using the `serial in`. The Serial Port can be found via the device manager. The input data is a JSON String. In the second step, the JSON string is converted to a JSON object. The sensor measuers the temperature. After converting the input data to a JSON object the `msg.paylpoad` therefore contains the 64 temperature values.  
+For capturing the data we are [running Node-RED on windows](https://nodered.org/docs/getting-started/windows). The sensor is connect to the PC via USB. As an input node we are therefor using the `serial in`. The Serial Port can be found via the device manager. The input data is a JSON String. In the second step, the JSON string is converted to a JSON object. The sensor measuers the temperature. After converting the input data to a JSON object the `msg.paylpoad` therefore contains the 64 temperature values.  
 
 ## To CSV
 
