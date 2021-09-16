@@ -14,7 +14,8 @@ The dashboard looks like following:
 
 [Dashboard]: https://github.com/sze-ssv/Capture_Data/blob/a5237569338459fa83816db67f0014b5c5a0027a/Dashboard.png
 
-A button on the dashboard can be used to start logging to the csv file. The counter visualizes how many data sets are added to the file. As soon as the flow is redeployed, the counter starts at zero. 
+A button on the dashboard can be used to start logging to the csv file. The counter visualizes how many data sets are added to the file. As soon as the flow is redeployed, the counter starts at zero. For training a machine learning model with a experimental setup as given in the example, it`s enough to capture around 100 values. Please make sure to capture round about the same amount of data for both classes. 
+
 Moreover the dashboard visualizes the data. The connected sensor measures 64 temperature values in an 8x8 array. 
 
 ## Loading Palette Nodes
